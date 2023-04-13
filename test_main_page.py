@@ -1,10 +1,8 @@
-from selenium import webdriver
 from selenium.webdriver.common.by import By
 
-LINK = 'http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/'
 
-
-def test_add_cart_button(browser: webdriver.Chrome):
-    browser.get(LINK)
-    button_add_cart = browser.find_elements(By.CLASS_NAME, 'btn.btn-lg.btn-primary.btn-add-to-basket')
-    assert len(button_add_cart) == 1, 'Missing add to cart button'
+def test_guest_can_go_to_login_page(browser):
+    link = "http://selenium1py.pythonanywhere.com/"
+    browser.get(link)
+    login_link = browser.find_element(By.CSS_SELECTOR, "#login_link")
+    login_link.click()
