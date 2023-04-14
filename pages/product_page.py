@@ -31,4 +31,14 @@ class ProductPage(BasePage):
     def shold_be_price_in_basket(self):
         price_product = self.get_price_product()
         price_in_basket = self.get_price_in_basket()
-        assert price_product == price_in_basket, "The price in the basket does not match the price of the product"
+        assert price_product == price_in_basket, \
+        "The price in the basket does not match the price of the product"
+
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(
+            *ProductPageLocators.SUCCESS_MESSAGE), \
+                "Success message is presented"
+
+    def should_be_disappeared_success_message(self):
+        assert self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), \
+                "Not disappeared success message"
